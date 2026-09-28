@@ -65,4 +65,3 @@ Catherine Li
 Yunjie Zhu
 
 Paul Zhao.
-Eric Guan Eric
