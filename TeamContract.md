@@ -61,3 +61,5 @@ Team Member Signatures:
 Eric Guan
 
 Catherine Li
+
+Judy Dai
