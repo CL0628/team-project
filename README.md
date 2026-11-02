@@ -21,14 +21,13 @@ at the end of the term.
 - Judy Dai
 - Eric Guan
 - Cathy Zhu
-
 ---
 
 ## Project Description
 
-### Domain
+### Domain: Entertainment
 
-[Project description]
+Project Description: a digital version of UNO game!
 
 ---
 
