@@ -41,9 +41,8 @@ Project Description: a digital version of UNO game!
 
 3. As a player, there should be a count down timer that displays how much time is left for my turn.
 
-4. As a player, I should be able to declare “UNO” when I only have one card left, so that i do not have to draw a penalty card
-
-5. Implementation: Link “UNO” to some key on the keyboard.
+4. As a player, I should be able to declare “UNO” when I only have one card left, so that i do not have to draw a penalty card 
+   - Implementation: Link “UNO” to some key on the keyboard.
 
 6. As a player I want to declare “UNO” when another player has one card left, so I can prevent the other player from winning
 
