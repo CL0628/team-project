@@ -225,10 +225,10 @@ Project Description: a digital version of UNO game!
 
 | Team Member | MVP Use Case |
 |-------------|--------------|
-| Catherine | PlayCard, DrawCard, DeclareUno <br/> Entities: Hand, Card|
-| Judy | SignUp, Logout, Login <br/> Entities: DiscardPile, Deck |
-| Eric | ViewPlayerStats, CompleteGame <br/> Entities: Game, GameSettings|
-| Cathy   | PlaywithBot (start with main menu) <br/> Entities: Player, BotPlayer|
+| Catherine | playcard, drawcard, declareUno <br/> Entities: Hand, Card|
+| Judy | signup, logout, login <br/> Entities: DiscardPile, Deck |
+| Eric | viewplayerstats, completegame <br/> Entities: Game, GameSettings|
+| Cathy   | playwithbot (start with main menu) <br/> Entities: Player, BotPlayer|
 
 SignUp, Logout, Login
 Entities: DiscardPile, Deck
