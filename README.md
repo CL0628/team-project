@@ -242,7 +242,6 @@ Entities: DiscardPile, Deck
 ### Card
 Represents an individual UNO card.
 ![card_class.png](src/images/uml-diagrams/card_class.png)
-### Card Classes and Interfaces
 
 - **Card (Interface):** The common interface implemented by all UNO cards, providing a shared type for different 
 card types.
