@@ -240,7 +240,13 @@ Entities: DiscardPile, Deck
 ## Entities
 
 ### Card
-Represents an individual UNO card.
+![card.png](src/images/uml-diagrams/card.png)
+Represents an individual UNO card and serves as the abstract base entity for all card types.
+
+- Class Relationships:
+  - ColoredCard and WildCard directly extend Card.
+  - NumberCard, DrawTwoCard, SkipCard, and ReverseCard extend ColoredCard.
+  - WildDrawFourCard extends WildCard.
 
 ### Hand
 Represents the cards currently held by a player.
@@ -278,7 +284,7 @@ Represents the configuration of a game.
 
 ### UML Class Diagram
 
-![card_class_and_hand_class.png](src/images/uml-diagrams/card_class_and_hand_class.png)
+![card.png](src/images/uml-diagrams/card.png)
 
 ### Sequence Diagrams
 
