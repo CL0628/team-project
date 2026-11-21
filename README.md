@@ -20,7 +20,7 @@ at the end of the term.
 - Catherine Li
 - Judy Dai
 - Eric Guan
-- Cathy Zhu
+- Yunjie Zhu
 ---
 
 ## Project Description
@@ -124,7 +124,10 @@ Project Description: a digital version of UNO game!
 - **Precondition:** The user is on the main menu.
 - **Trigger:** The user selects "Start Game" (or "Play with Bots" if multiplayer is added).
 - **Main Success Scenario:**
-    1. The game begins.
+    1. The player clicks "Start Game."
+  2. The system creates a new game with the player and bots.
+  3. The system shuffles and deals the cards.
+  4. The system starts the first turn.
 - **Success Outcome:** Game begins.
 
 ### 5. CompleteGame
@@ -228,7 +231,7 @@ Project Description: a digital version of UNO game!
 | Catherine | playcard, drawcard, declareUno <br/> Entities: Hand, Card|
 | Judy | signup, logout, login <br/> Entities: DiscardPile, Deck |
 | Eric | viewplayerstats, completegame <br/> Entities: Game, GameSettings|
-| Cathy   | playwithbot (start with main menu) <br/> Entities: Player, BotPlayer|
+| Yunjie Zhu   | playwithbot (start with main menu) <br/> Entities: Player, BotPlayer|
 
 SignUp, Logout, Login
 Entities: DiscardPile, Deck
