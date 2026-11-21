@@ -1,5 +1,9 @@
 package entity;
 
+/**
+ * Represents the configuration of a game, used to initialize a new game.
+ */
+
 public class gameSetting {
     private int numBots;
     private int cardsDealt;
