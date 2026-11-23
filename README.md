@@ -100,7 +100,7 @@ Project Description: a digital version of UNO game!
 - **Primary Actor:** User
 - **Precondition:** User account exists.
 - **Trigger:** User opens the app.
-- **Main Success Scenario:**
+- **app.Main Success Scenario:**
     1. User inputs their username and password.
     2. System checks the account information.
     3. Login is successful.
@@ -123,7 +123,7 @@ Project Description: a digital version of UNO game!
 - **Primary Actor:** User
 - **Precondition:** The user is on the main menu.
 - **Trigger:** The user selects "Start Game" (or "Play with Bots" if multiplayer is added).
-- **Main Success Scenario:**
+- **app.Main Success Scenario:**
     1. The game begins.
 - **Success Outcome:** Game begins.
 
@@ -135,7 +135,7 @@ Project Description: a digital version of UNO game!
     - A game is currently in progress.
     - A player has met the winning condition.
 - **Trigger:** A player plays their final card, causing the game to end.
-- **Main Success Scenario:**
+- **app.Main Success Scenario:**
     1. The game determines the winner.
     2. The system calculates the statistics resulting from the game.
     3. The system updates the relevant player's statistics.
@@ -151,7 +151,7 @@ Project Description: a digital version of UNO game!
     - Player account exists.
     - Player is logged in.
 - **Trigger:** Player clicks the "Check Stats" button in the lobby view.
-- **Main Success Scenario:**
+- **app.Main Success Scenario:**
     1. Player clicks the "Check Stats" button.
     2. Player enters the Player Stats view.
 - **Success Outcome:** Statistics of the currently logged-in player are displayed in the app.
@@ -170,7 +170,7 @@ Project Description: a digital version of UNO game!
         2. A card that matches the current number (0–9).
         3. A card that matches the current symbol or action (Wild, Skip, Reverse, +2, or Wild +4).
 - **Trigger:** Player plays a card from their hand.
-- **Main Success Scenario:**
+- **app.Main Success Scenario:**
     1. User picks a card.
     2. System assesses whether the card is playable.
     3. If the card is playable, the system allows the player to play it.
@@ -200,7 +200,7 @@ Project Description: a digital version of UNO game!
 - **Primary Actor:** User
 - **Precondition:** The player has no playable cards, or they wish to draw a card for strategic purposes.
 - **Trigger:** The user clicks the deck.
-- **Main Success Scenario:**
+- **app.Main Success Scenario:**
     1. The player picks up one card.
 - **Extensions:** N/A
 - **Success Outcome:** The player picks up one card.
@@ -211,7 +211,7 @@ Project Description: a digital version of UNO game!
 - **Primary Actor:** User
 - **Precondition:** The player has only one card left in their hand.
 - **Trigger:** User clicks the UNO button that appears when they have one card left in their hand.
-- **Main Success Scenario:**
+- **app.Main Success Scenario:**
     1. The user declares UNO.
 - **Extensions:**
     - Another player calls UNO before the user does.
