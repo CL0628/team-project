@@ -3,8 +3,6 @@ package entity;
 import entity.card.Card;
 import entity.card.CardColor;
 import entity.card.ColoredCard;
-import entity.card.NumberCard;
-import entity.card.WildCard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,29 +63,29 @@ public class Game {
      * @throws NullPointerException if a required argument or player is null
      * @throws IllegalArgumentException if there are fewer than two or more than four players
      */
-    public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firstDiscard, CardColor initialColor){
-        /*to make sure that the inputs are avalible.*/
-        Objects.requireNonNull(settings, "Settings cannot be null.");
-        Objects.requireNonNull(players, "Players cannot be null.");
-        /*to make sure game start with min 2 max 4 players, both human and bot count as a player.*/
-        if (players.size() < 2 || players.size() > 4) {
-            throw new IllegalArgumentException(
-                    "A game needs 2 to 4 players.");
-        }
-        this.settings = new gameSetting(settings.getNumBots(), settings.getCardsDealt());
-        this.players = List.copyOf(players);
-        this.gameId = UUID.randomUUID().toString();
-
-        this.drawPile = Objects.requireNonNull(drawPile, "Draw pile cannot be null.");
-
-        this.discardPile = new ArrayList<>();
-        this.discardPile.add(Objects.requireNonNull(firstDiscard, "First discard cannot be null"));
-
-        this.currentPlayerIndex = 0;
-        this.direction = Direction.CLOCKWISE;
-        this.currentColor = Objects.requireNonNull(initialColor, "Initial color cannot be null.");
-
+public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firstDiscard, CardColor initialColor){
+    /*to make sure that the inputs are avalible.*/
+    Objects.requireNonNull(settings, "Settings cannot be null.");
+    Objects.requireNonNull(players, "Players cannot be null.");
+    /*to make sure game start with min 2 max 4 players, both human and bot count as a player.*/
+    if (players.size() < 2 || players.size() > 4) {
+        throw new IllegalArgumentException(
+                "A game needs 2 to 4 players.");
     }
+    this.settings = new gameSetting(settings.getNumBots(), settings.getCardsDealt());
+    this.players = List.copyOf(players);
+    this.gameId = UUID.randomUUID().toString();
+
+    this.drawPile = Objects.requireNonNull(drawPile, "Draw pile cannot be null.");
+
+    this.discardPile = new ArrayList<>();
+    this.discardPile.add(Objects.requireNonNull(firstDiscard, "First discard cannot be null"));
+
+    this.currentPlayerIndex = 0;
+    this.direction = Direction.CLOCKWISE;
+    this.currentColor = Objects.requireNonNull(initialColor, "Initial color cannot be null.");
+
+}
 
     /**
      * Returns the identifier assigned to this game.
@@ -106,7 +104,7 @@ public class Game {
      */
     public gameSetting getSettings() {
         return new gameSetting(settings.getNumBots(),
-                settings.getCardsDealt());
+                                settings.getCardsDealt());
     }
 
     /**
