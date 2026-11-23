@@ -28,4 +28,12 @@ public class WildCard extends Card implements CardEffect {
     public void applyEffect(Game game) {
 
     }
+
+    /**
+     * @return CardType of this card
+     */
+    @Override
+    public CardType getCardType() {
+        return CardType.WILD;
+    }
 }

@@ -27,4 +27,14 @@ public class DrawTwoCard extends ColoredCard implements CardEffect {
     public void applyEffect(Game game) {
 
     }
+
+    /**
+     * Getter for CardType.
+     *
+     * @return CardType.DRAW_TWO
+     */
+    @Override
+    public CardType getCardType() {
+        return CardType.DRAW_TWO;
+    }
 }

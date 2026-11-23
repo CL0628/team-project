@@ -26,4 +26,14 @@ public class NumberCard extends ColoredCard {
     public int getNumber() {
         return number;
     }
+
+    /**
+     * Getter for CardType.
+     *
+     * @return CardType.NUMBER
+     */
+    @Override
+    public CardType getCardType() {
+        return CardType.NUMBER;
+    }
 }

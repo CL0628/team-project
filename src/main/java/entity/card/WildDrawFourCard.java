@@ -17,4 +17,14 @@ public class WildDrawFourCard extends WildCard implements CardEffect {
     public void applyEffect(Game game) {
         super.applyEffect(game); // ths call to super changes the color of current game
     }
+
+    /**
+     * Getter for CardType.
+     *
+     * @return CardType.WILD_DRAW_FOUR
+     */
+    @Override
+    public CardType getCardType() {
+        return CardType.WILD_DRAW_FOUR;
+    }
 }
