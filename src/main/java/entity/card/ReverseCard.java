@@ -25,4 +25,14 @@ public class ReverseCard extends ColoredCard implements CardEffect {
     public void applyEffect(Game game) {
 
     }
+
+    /**
+     * Getter for CardType.
+     *
+     * @return CardType.REVERSE
+     */
+    @Override
+    public CardType getCardType() {
+        return CardType.REVERSE;
+    }
 }

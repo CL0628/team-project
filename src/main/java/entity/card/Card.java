@@ -5,4 +5,11 @@ package entity.card;
  */
 public abstract class Card {
 
+    /**
+     * Getter for CardType
+     *
+     * @return CardType
+     */
+    public abstract CardType getCardType();
+
 }
