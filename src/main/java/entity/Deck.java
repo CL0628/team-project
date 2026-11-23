@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.Collections;
 
 /**
- * A class representing the deck in a UNO game.
+ * A class representing the deck in a UNO game. Always
  * It manages card avaliability and random selection
  */
 public class Deck {
 
-    // Represents the cards in a Deck
+    // Represents the Deck, where the end of this list represents the top of the deck
+    // and the front of the list represents the bottom of the deck
     private List<Card> cardPile;
 
     /**
@@ -23,16 +24,24 @@ public class Deck {
     }
 
     /**
-     * extracts a specified number of cards from the front of Deck.
+     * Extracts a specified number of cards from the top of the Deck.
      * @param n number of cards to draw from the Deck
      * @return returns n cards from the Deck
      */
     public List<Card> drawCards(int n) {
         List<Card> drawnCards = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            drawnCards.add(cardPile.remove(0));
+            drawnCards.add(cardPile.remove(cardPile.size() - 1));
         }
         return drawnCards;
+    }
+
+    /**
+     * Adds a single card back to the top of the Deck
+     * @param card card to return back into the Deck
+     */
+    public void addCard(Card card) {
+        cardPile.add(card);
     }
 
     /**
