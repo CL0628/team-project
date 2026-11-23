@@ -23,6 +23,8 @@ public class LoginView extends BackgroundPanel {
     private final RoundedButton loginButton = new RoundedButton("Login", FORM_WIDTH, 60);
     private final JLabel signUpLink = new JLabel("Sign Up");
 
+    private Runnable onSignUpClicked = () -> { };
+
     public LoginView() {
         setPreferredSize(new Dimension(1080, 610));
         setLayout(new BorderLayout());
@@ -95,8 +97,7 @@ public class LoginView extends BackgroundPanel {
         signUpLink.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Placeholder until the Sign Up view exists
-                JOptionPane.showMessageDialog(LoginView.this, "Sign up is coming soon!");
+                onSignUpClicked.run();
             }
 
             @Override
@@ -118,5 +119,9 @@ public class LoginView extends BackgroundPanel {
         row.add(Box.createHorizontalStrut(4));
         row.add(signUpLink);
         return row;
+    }
+
+    public void setOnSignUpClicked(Runnable action) {
+        this.onSignUpClicked = action;
     }
 }
