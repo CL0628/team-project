@@ -1,6 +1,13 @@
 package view;
 
+import interface_adapter.signup.SignupController;
+import interface_adapter.signup.SignupState;
+import interface_adapter.signup.SignupViewModel;
+import interface_adapter.signup.SignupViewModelListener;
+
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,8 +17,11 @@ import java.util.Map;
 /**
  * The Sign Up screen. Shows a username box, a password box, a password confirm box, a Sign Up button and a
  * "Log in" link on top of the UNO background.
+ *
+ * <p>Keeps the SignupState up to date as the user types, calls the SignupController when
+ * the user clicks, and redraws itself when the SignupViewModel changes.</p>
  */
-public class SignupView extends BackgroundPanel {
+public class SignupView extends BackgroundPanel implements SignupViewModelListener {
     private static final int FORM_WIDTH = 380;   // width of the boxes and the button
     private static final Color LINK_ORANGE = new Color(232, 150, 30);
 
@@ -22,13 +32,18 @@ public class SignupView extends BackgroundPanel {
     private final RoundedButton signUpButton = new RoundedButton("Sign Up", FORM_WIDTH, 60);
     private final JLabel loginLink = new JLabel("Login");
 
-    /** What happens when "Login" is clicked. Does nothing until Main sets it. */
-    private Runnable onLogInClicked = () -> { };
+    private final SignupViewModel signupViewModel;
+    private SignupController signupController;
 
     /**
-     * Builds the sign up screen and lays out all of its components.
+     * Builds the sign up screen and starts listening to its view model.
+     *
+     * @param signupViewModel the view model this screen displays
      */
-    public SignupView() {
+    public SignupView(SignupViewModel signupViewModel) {
+        this.signupViewModel = signupViewModel;
+        this.signupViewModel.addListener(this);
+
         setPreferredSize(new Dimension(1080, 610));
         setLayout(new BorderLayout());
 
@@ -70,6 +85,8 @@ public class SignupView extends BackgroundPanel {
         leftColumn.setPreferredSize(new Dimension(460, 0));
         leftColumn.add(form);
         add(leftColumn, BorderLayout.WEST);
+
+        wireInputs();
     }
 
     private JPanel buildErrorArea() {
@@ -105,7 +122,7 @@ public class SignupView extends BackgroundPanel {
         loginLink.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                onLogInClicked.run();
+                signupController.switchToLoginView();
             }
 
             @Override
@@ -129,7 +146,85 @@ public class SignupView extends BackgroundPanel {
         return row;
     }
 
-    public void setOnLogInClicked(Runnable action) {
-        this.onLogInClicked = action;
+    /**
+     * Gives this screen the controller to call when the user clicks.
+     *
+     * @param signupController the controller for the Sign Up use case
+     */
+    public void setSignupController(SignupController signupController) {
+        this.signupController = signupController;
+    }
+
+    /**
+     * Redraws the screen from the SignupViewModel's state.
+     */
+    @Override
+    public void stateChanged() {
+        final SignupState state = signupViewModel.getState();
+        // Only replace the text if it's different, so the cursor doesn't jump while typing
+        if (!usernameInputField.getText().equals(state.getUsername())) {
+            usernameInputField.setText(state.getUsername());
+        }
+        if (!new String(passwordInputField.getPassword()).equals(state.getPassword())) {
+            passwordInputField.setText(state.getPassword());
+        }
+        if (!new String(passwordconfirmInputField.getPassword()).equals(state.getRepeatPassword())) {
+            passwordconfirmInputField.setText(state.getRepeatPassword());
+        }
+        // A single space keeps the label's height when there's no error
+        final String error = state.getSignupError();
+        errorLabel.setText(error == null || error.isEmpty() ? " " : error);
+    }
+
+    /**
+     * Connects the boxes and the button: typing updates the state, and clicking Sign Up
+     * (or pressing Enter in any box) runs the Sign Up use case.
+     */
+    private void wireInputs() {
+        usernameInputField.getDocument().addDocumentListener(onAnyChange(
+                () -> signupViewModel.getState().setUsername(usernameInputField.getText())));
+        passwordInputField.getDocument().addDocumentListener(onAnyChange(
+                () -> signupViewModel.getState().setPassword(new String(passwordInputField.getPassword()))));
+        passwordconfirmInputField.getDocument().addDocumentListener(onAnyChange(
+                () -> signupViewModel.getState().setRepeatPassword(
+                        new String(passwordconfirmInputField.getPassword()))));
+
+        signUpButton.addActionListener(e -> submit());
+        usernameInputField.addActionListener(e -> submit());
+        passwordInputField.addActionListener(e -> submit());
+        passwordconfirmInputField.addActionListener(e -> submit());
+    }
+
+    /**
+     * Sends what's in the boxes to the Sign Up use case.
+     */
+    private void submit() {
+        final SignupState state = signupViewModel.getState();
+        signupController.execute(state.getUsername(), state.getPassword(), state.getRepeatPassword());
+    }
+
+    /**
+     * Makes a DocumentListener that runs the same code for any change to the text.
+     *
+     * @param update the code to run
+     * @return the listener
+     */
+    private static DocumentListener onAnyChange(Runnable update) {
+        return new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                update.run();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                update.run();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                update.run();
+            }
+        };
     }
 }
