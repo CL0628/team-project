@@ -342,9 +342,22 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
      * @return true if the card is playable
      */
     public boolean canPlayCard(Card card) {
-        // TODO: Implement card matching and play restrictions.
-        throw new UnsupportedOperationException(
-                "Card validation is not implemented yet.");
+        Objects.requireNonNull(card, "Card cannot be null.");
+
+        Card topCard = getTopDiscard();
+        if (card instanceof ColoredCard) {
+            ColoredCard coloredCard = (ColoredCard) card;
+            if (coloredCard.getColor() == currentColor) {
+                return true;
+            }
+        }
+
+        if (card instanceof NumberCard && topCard instanceof NumberCard) {
+            return ((NumberCard) card).getNumber()
+                    == ((NumberCard) topCard).getNumber();
+        }
+
+        return card instanceof WildCard;
     }
 
     /**
