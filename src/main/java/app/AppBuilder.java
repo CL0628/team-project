@@ -1,6 +1,7 @@
 package app;
 
 import data_access.FilePlayerDataAccessObject;
+import entity.PlayerDataFactory;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.lobby.LobbyViewModel;
 import interface_adapter.login.LoginController;
@@ -117,7 +118,7 @@ public class AppBuilder {
         final SignupOutputBoundary signupPresenter = new SignupPresenter(
                 viewManagerModel, signupViewModel, loginViewModel);
         final SignupInputBoundary signupInteractor = new SignupInteractor(
-                playerDataAccessObject, signupPresenter);
+                playerDataAccessObject, signupPresenter, new PlayerDataFactory());
         signupView.setSignupController(new SignupController(signupInteractor));
         return this;
     }

@@ -1,6 +1,6 @@
 package use_case.signup;
 
-import entity.playerData;
+import entity.PlayerDataFactory;
 
 /**
  * The Sign Up Interactor: checks the new account's details and saves it.
@@ -9,16 +9,21 @@ public class SignupInteractor implements SignupInputBoundary {
 
     private final SignupDataAccessInterface dataAccess;
     private final SignupOutputBoundary presenter;
+    private final PlayerDataFactory playerDataFactory;
 
     /**
      * Creates the interactor.
      *
      * @param dataAccess where player accounts are stored
      * @param presenter receives the result
+     * @param playerDataFactory creates new player accounts
      */
-    public SignupInteractor(SignupDataAccessInterface dataAccess, SignupOutputBoundary presenter) {
+    public SignupInteractor(SignupDataAccessInterface dataAccess,
+                            SignupOutputBoundary presenter,
+                            PlayerDataFactory playerDataFactory) {
         this.dataAccess = dataAccess;
         this.presenter = presenter;
+        this.playerDataFactory = playerDataFactory;
     }
 
     @Override
@@ -47,7 +52,7 @@ public class SignupInteractor implements SignupInputBoundary {
             return;
         }
 
-        dataAccess.save(new playerData(username, password));
+        dataAccess.save(playerDataFactory.create(username, password));
         presenter.prepareSuccessView(new SignupOutputData(username));
     }
 
