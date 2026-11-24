@@ -55,10 +55,14 @@ public class PlayCardInteractor implements PlayCardInputBoundary{
         }
 
         playCardPresenter.prepareSuccessView(new PlayCardOutputData(
+                player.getHand(),
                 player,
                 playedCard,
                 game.getDirection(),
-                game.getCurrentColor()
+                game.getCurrentColor(),
+                game.isFinished(),
+                game.getWinnerId(),
+                game.getCurrentPlayer()
         ));
     }
 }
