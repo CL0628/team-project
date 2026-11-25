@@ -4,6 +4,7 @@ import interface_adapter.viewplayerstats.ViewPlayerStatsController;
 import interface_adapter.viewplayerstats.ViewPlayerStatsState;
 import interface_adapter.viewplayerstats.ViewPlayerStatsViewModel;
 
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
@@ -16,6 +17,9 @@ import java.util.Objects;
  */
 public final class ViewPlayerStatsView extends BackgroundPanel
         implements PropertyChangeListener {
+
+    private final RoundedButton backButton =
+            new RoundedButton("Back to Lobby", 180, 44);
 
     private final ViewPlayerStatsViewModel viewModel;
 
@@ -83,10 +87,17 @@ public final class ViewPlayerStatsView extends BackgroundPanel
         refreshButton.addActionListener(
                 event -> controller.execute());
 
+        backButton.setEnabled(false);
+
+        JPanel buttons = new JPanel(new GridLayout(1, 2, 12, 0));
+        buttons.setOpaque(false);
+        buttons.add(refreshButton);
+        buttons.add(backButton);
+
         JPanel actions = new JPanel(new BorderLayout(0, 12));
         actions.setOpaque(false);
         actions.add(errorLabel, BorderLayout.NORTH);
-        actions.add(refreshButton, BorderLayout.SOUTH);
+        actions.add(buttons, BorderLayout.SOUTH);
         content.add(actions, BorderLayout.SOUTH);
 
         add(content);
@@ -101,6 +112,17 @@ public final class ViewPlayerStatsView extends BackgroundPanel
                                    JLabel valueLabel) {
         panel.add(new JLabel(name));
         panel.add(valueLabel);
+    }
+
+    /**
+     * Registers the action for returning to the lobby.
+     *
+     * @param listener handles the back navigation request
+     */
+    public void addBackListener(ActionListener listener) {
+        backButton.addActionListener(
+                Objects.requireNonNull(listener));
+        backButton.setEnabled(true);
     }
 
     /**

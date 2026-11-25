@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public final class ViewPlayerStatsViewModel {
 
+    public static final String VIEW_NAME = "player_stats";
+
     private final PropertyChangeSupport support =
             new PropertyChangeSupport(this);
 

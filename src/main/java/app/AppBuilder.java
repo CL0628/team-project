@@ -10,6 +10,7 @@ import interface_adapter.login.LoginViewModel;
 import interface_adapter.signup.SignupController;
 import interface_adapter.signup.SignupPresenter;
 import interface_adapter.signup.SignupViewModel;
+import interface_adapter.viewplayerstats.ViewPlayerStatsViewModel;
 import use_case.login.LoginInputBoundary;
 import use_case.login.LoginInteractor;
 import use_case.login.LoginOutputBoundary;
@@ -20,6 +21,7 @@ import view.LobbyView;
 import view.LoginView;
 import view.SignupView;
 import view.ViewManager;
+import view.ViewPlayerStatsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -91,10 +93,40 @@ public class AppBuilder {
      */
     public AppBuilder addLobbyView() {
         lobbyViewModel = new LobbyViewModel();
-        cardPanel.add(new LobbyView(lobbyViewModel), LobbyViewModel.VIEW_NAME);
+        final LobbyView lobbyView =
+                new LobbyView(lobbyViewModel);
+
+        lobbyView.addViewStatsListener(event -> {
+            viewManagerModel.setState(
+                    ViewPlayerStatsViewModel.VIEW_NAME);
+            viewManagerModel.notifyViewChanged();
+        });
+        cardPanel.add(lobbyView, LobbyViewModel.VIEW_NAME);
         return this;
     }
 
+    /**
+     * Creates and registers the player statistics screen.
+     *
+     * @return this builder
+     */
+    public AppBuilder addViewPlayerStatsView() {
+        final ViewPlayerStatsView statsView =
+                ViewPlayerStatsFactory.create(
+                        playerDataAccessObject,
+                        playerDataAccessObject);
+
+        statsView.addBackListener(event -> {
+            viewManagerModel.setState(LobbyViewModel.VIEW_NAME);
+            viewManagerModel.notifyViewChanged();
+        });
+
+        cardPanel.add(
+                statsView,
+                ViewPlayerStatsViewModel.VIEW_NAME);
+
+        return this;
+    }
     /**
      * Wires the Login use case. Call after the login, sign up and lobby views are added.
      *
