@@ -17,6 +17,7 @@ public class Main {
                 .addLoginView()
                 .addSignupView()
                 .addLobbyView()
+                .addViewPlayerStatsView()
                 .addLoginUseCase()
                 .addSignupUseCase()
                 .build();

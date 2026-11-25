@@ -2,6 +2,7 @@ package view;
 
 import interface_adapter.lobby.LobbyViewModel;
 import interface_adapter.lobby.LobbyViewModelListener;
+import java.awt.event.ActionListener;
 
 import java.awt.*;
 import javax.swing.JButton;
@@ -125,6 +126,15 @@ public class LobbyView extends BackgroundPanel
         add(centerPanel, BorderLayout.CENTER);
 
         stateChanged();
+    }
+    
+    /**
+     * Registeres a listener for the player statistics button.
+     *
+     * @param listener handles the statistics navigation request
+     */
+    public void addViewStatsListener(ActionListener listener) {
+        playerStatsButton.addActionListener(listener);
     }
 
     /**
