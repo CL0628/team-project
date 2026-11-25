@@ -2,6 +2,7 @@ package view;
 
 import interface_adapter.lobby.LobbyViewModel;
 import interface_adapter.lobby.LobbyViewModelListener;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,8 @@ public class LobbyView extends BackgroundPanel implements LobbyViewModelListener
 
     private final LobbyViewModel lobbyViewModel;
     private final JLabel greeting = new JLabel(" ");
-
+    private final RoundedButton viewStatsButton =
+            new RoundedButton("View Stats", 180, 44);
     /**
      * Builds the placeholder lobby and starts listening to its view model.
      *
@@ -28,7 +30,23 @@ public class LobbyView extends BackgroundPanel implements LobbyViewModelListener
         setLayout(new GridBagLayout());
         greeting.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 32));
         greeting.setForeground(Color.WHITE);
-        add(greeting);
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.insets = new Insets(0, 0, 20, 0);
+        add(greeting, constraints);
+
+        constraints.gridy = 1;
+        add(viewStatsButton, constraints);
+    }
+
+    /**
+     * Registers the action triggered by the View Stats button.
+     *
+     * @param listener handles the statistics navigation request
+     */
+    public void addViewStatsListener(ActionListener listener) {
+        viewStatsButton.addActionListener(listener);
     }
 
     /**
