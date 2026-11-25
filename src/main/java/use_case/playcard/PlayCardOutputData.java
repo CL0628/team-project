@@ -1,7 +1,5 @@
 package use_case.playcard;
 
-import entity.Direction;
-import entity.Player;
 import entity.card.Card;
 import entity.card.CardColor;
 
@@ -12,65 +10,49 @@ import java.util.List;
  */
 public class PlayCardOutputData {
 
-    private final List<Card> currentPlayerHand;
-    private final Player player;
     private final Card playedCard;
-    private Direction direction;
+    private final List<Card> updatedHand;
+    private final String nextPlayerId;
     private CardColor currentColor;
-    private final boolean isGameOver;
+    private final String effectMessage;
+    private final boolean gameFinished;
     private final String winnerId;
-    private final Player currentPlayer;
 
-    public PlayCardOutputData(List<Card> currentPlayerHand, Player player, Card playedCard,
-                              Direction direction, CardColor currentColor, boolean isGameOver,
-                              String winnerId, Player currentPlayer) {
-        this.currentPlayerHand = currentPlayerHand;
-        this.player = player;
+    public PlayCardOutputData(Card playedCard, List<Card> updatedHand, String nextPlayerId,
+                              String effectMessage, boolean gameFinished, String winnerId) {
         this.playedCard = playedCard;
-        this.direction = direction;
-        this.currentColor = currentColor;
-        this.isGameOver = isGameOver;
+        this.updatedHand = updatedHand;
+        this.nextPlayerId = nextPlayerId;
+        this.effectMessage = effectMessage;
+        this.gameFinished = gameFinished;
         this.winnerId = winnerId;
-        this.currentPlayer = currentPlayer;
-    }
-
-    public List<Card> getCurrentPlayerHand() {
-        return currentPlayerHand;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 
     public Card getPlayedCard() {
         return playedCard;
     }
 
-    public Direction getDirection() {
-        return direction;
+    public List<Card> getUpdatedHand() {
+        return updatedHand;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    public String getNextPlayerId() {
+        return nextPlayerId;
     }
 
     public CardColor getCurrentColor() {
         return currentColor;
     }
 
-    public void setCurrentColor(CardColor currentColor) {
-        this.currentColor = currentColor;
+    public boolean isGameFinished() {
+        return gameFinished;
     }
 
-    public boolean isGameOver() {
-        return isGameOver;
+    public String getEffectMessage() {
+        return effectMessage;
     }
 
     public String getWinnerId() {
         return winnerId;
-    }
-
-    public Player getCurrentPlayer() {
-        return currentPlayer;
     }
 }

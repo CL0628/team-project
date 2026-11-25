@@ -7,12 +7,9 @@ import entity.card.CardEffect;
 
 public class PlayCardInteractor implements PlayCardInputBoundary{
 
-    private final PlayCardDataAccessInterface dataAccessObject;
     private final PlayCardOutputBoundary playCardPresenter;
 
-    public PlayCardInteractor(PlayCardDataAccessInterface dataAccessInterface,
-                              PlayCardOutputBoundary playCardOutputBoundary) {
-        this.dataAccessObject = dataAccessInterface;
+    public PlayCardInteractor(PlayCardOutputBoundary playCardOutputBoundary) {
         this.playCardPresenter = playCardOutputBoundary;
     }
 
@@ -23,20 +20,7 @@ public class PlayCardInteractor implements PlayCardInputBoundary{
         Player player = playCardInputData.getPlayer();
         Card selectedCard = playCardInputData.getCard();
 
-        // check whether the selected card is in player's hand
-        int cardIndex = -1;
-        for (int i = 0; i < player.getHand().size(); i++) {
-            if (player.getHand().get(i) == selectedCard) {
-                cardIndex = i;
-                break;
-            }
-        }
-
-        if (cardIndex == -1) {
-            playCardPresenter.prepareFailView("The selected card is not in the player's hand.");
-            return;
-        }
-
+        // check if chosenCard can be played
         if (!game.canPlayCard(selectedCard)) {
             playCardPresenter.prepareFailView("That card cannot be played.");
             return;
@@ -54,15 +38,15 @@ public class PlayCardInteractor implements PlayCardInputBoundary{
             game.advanceTurn();
         }
 
-        playCardPresenter.prepareSuccessView(new PlayCardOutputData(
-                player.getHand(),
-                player,
-                playedCard,
-                game.getDirection(),
-                game.getCurrentColor(),
-                game.isFinished(),
-                game.getWinnerId(),
-                game.getCurrentPlayer()
-        ));
+//        playCardPresenter.prepareSuccessView(new PlayCardOutputData(
+//                player.getHand(),
+//                player,
+//                playedCard,
+//                game.getDirection(),
+//                game.getCurrentColor(),
+//                game.isFinished(),
+//                game.getWinnerId(),
+//                game.getCurrentPlayer()
+//        ));
     }
 }

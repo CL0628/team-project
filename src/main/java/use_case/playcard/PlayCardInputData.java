@@ -1,32 +1,34 @@
 package use_case.playcard;
 
-import entity.Game;
-import entity.Player;
-import entity.card.Card;
+import entity.card.CardColor;
 
 public class PlayCardInputData {
 
-    private final Card selectedCard;
-    // is input data allowed to depend on a entity? Does this violate clean architecture?
-    private final Player player;
-    private Game game;
+    private final String playerID;
+    private final int selectedCardIndex;
+    private final CardColor chosenColor; // only for wild cards
 
-    public PlayCardInputData(Card card, Player player, Game game) {
-        this.selectedCard = card;
-        this.player = player;
-        this.game = game;
+    public PlayCardInputData(String playerID, int selectedCardIndex) {
+        this.playerID = playerID;
+        this.selectedCardIndex = selectedCardIndex;
+        this.chosenColor = null;
     }
 
-    Card getCard() {
-        return selectedCard;
+    public PlayCardInputData(String playerID, int selectedCardIndex, CardColor chosenColor) {
+        this.playerID = playerID;
+        this.selectedCardIndex = selectedCardIndex;
+        this.chosenColor = chosenColor;
     }
 
-    Player getPlayer() {
-        return player;
+    public String getPlayerID() {
+        return playerID;
     }
 
-    Game getGame() {
-        return game;  // feels weird. Am i allowed to return a entity?
+    public int getSelectedCardIndex() {
+        return selectedCardIndex;
     }
 
+    public CardColor getChosenColor() {
+        return chosenColor;
+    }
 }
