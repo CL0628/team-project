@@ -13,16 +13,18 @@ public class PlayCardOutputData {
     private final Card playedCard;
     private final List<Card> updatedHand;
     private final String nextPlayerId;
-    private CardColor currentColor;
+    private final CardColor currentColor;
     private final String effectMessage;
     private final boolean gameFinished;
     private final String winnerId;
 
     public PlayCardOutputData(Card playedCard, List<Card> updatedHand, String nextPlayerId,
-                              String effectMessage, boolean gameFinished, String winnerId) {
+                              CardColor currentColor, String effectMessage,
+                              boolean gameFinished, String winnerId) {
         this.playedCard = playedCard;
         this.updatedHand = updatedHand;
         this.nextPlayerId = nextPlayerId;
+        this.currentColor = currentColor;
         this.effectMessage = effectMessage;
         this.gameFinished = gameFinished;
         this.winnerId = winnerId;
