@@ -19,6 +19,10 @@ public class BackgroundPanel extends JPanel {
         image = loadImage("/backgrounds/login_background.png");
     }
 
+    public BackgroundPanel(String imagePath) {
+        image = loadImage(imagePath);
+    }
+
     /** Loads an image from src/main/resources, or returns null if it's missing. */
     private static BufferedImage loadImage(String path) {
         URL url = BackgroundPanel.class.getResource(path);
