@@ -1,5 +1,7 @@
 package entity;
 
+import entity.card.NumberCard;
+import entity.card.WildCard;
 import entity.card.Card;
 import entity.card.CardColor;
 import entity.card.ColoredCard;
