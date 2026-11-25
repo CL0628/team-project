@@ -14,7 +14,7 @@ public class WildCard extends Card implements CardEffect {
      *
      * @return Color choice from player.
      */
-    public CardColor chooseColor(Player player) {
+    public CardColor chooseColor() {
         return CardColor.RED;
     }
 
