@@ -1,13 +1,28 @@
-import view.LoginView;
+import app.AppBuilder;
 
 import javax.swing.*;
 
+/**
+ * Starts the UNO Desktop application.
+ */
 public class Main {
+
+    /**
+     * Builds the application window and shows it.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
-        JFrame frame = new JFrame("UNO Desktop");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new LoginView());
-        frame.pack();
-        frame.setVisible(true);
+        JFrame application = new AppBuilder()
+                .addLoginView()
+                .addSignupView()
+                .addLobbyView()
+                .addLoginUseCase()
+                .addSignupUseCase()
+                .build();
+
+        application.pack();
+        application.setLocationRelativeTo(null);
+        application.setVisible(true);
     }
 }

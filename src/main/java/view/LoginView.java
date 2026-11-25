@@ -1,6 +1,13 @@
 package view;
 
+import interface_adapter.login.LoginController;
+import interface_adapter.login.LoginState;
+import interface_adapter.login.LoginViewModel;
+import interface_adapter.login.LoginViewModelListener;
+
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,9 +17,11 @@ import java.util.Map;
 /**
  * The login screen. Shows a username box, a password box, a Login button and a
  * "Sign Up" link on top of the UNO background.
+ *
+ * <p>Keeps the LoginState up to date as the user types, calls the LoginController when
+ * the user clicks, and redraws itself when the LoginViewModel changes.</p>
  */
-
-public class LoginView extends BackgroundPanel {
+public class LoginView extends BackgroundPanel implements LoginViewModelListener {
 
     private static final int FORM_WIDTH = 380;   // width of the boxes and the button
     private static final Color LINK_ORANGE = new Color(232, 150, 30);
@@ -23,7 +32,18 @@ public class LoginView extends BackgroundPanel {
     private final RoundedButton loginButton = new RoundedButton("Login", FORM_WIDTH, 60);
     private final JLabel signUpLink = new JLabel("Sign Up");
 
-    public LoginView() {
+    private final LoginViewModel loginViewModel;
+    private LoginController loginController;
+
+    /**
+     * Builds the login screen and starts listening to its view model.
+     *
+     * @param loginViewModel the view model this screen displays
+     */
+    public LoginView(LoginViewModel loginViewModel) {
+        this.loginViewModel = loginViewModel;
+        this.loginViewModel.addListener(this);
+
         setPreferredSize(new Dimension(1080, 610));
         setLayout(new BorderLayout());
 
@@ -60,6 +80,8 @@ public class LoginView extends BackgroundPanel {
         leftColumn.setPreferredSize(new Dimension(460, 0));
         leftColumn.add(form);
         add(leftColumn, BorderLayout.WEST);
+
+        wireInputs();
     }
 
     private JPanel buildErrorArea() {
@@ -95,8 +117,7 @@ public class LoginView extends BackgroundPanel {
         signUpLink.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // Placeholder until the Sign Up view exists
-                JOptionPane.showMessageDialog(LoginView.this, "Sign up is coming soon!");
+                loginController.switchToSignupView();
             }
 
             @Override
@@ -118,5 +139,78 @@ public class LoginView extends BackgroundPanel {
         row.add(Box.createHorizontalStrut(4));
         row.add(signUpLink);
         return row;
+    }
+
+    /**
+     * Gives this screen the controller to call when the user clicks.
+     *
+     * @param loginController the controller for the Login use case
+     */
+    public void setLoginController(LoginController loginController) {
+        this.loginController = loginController;
+    }
+
+    /**
+     * Redraws the screen from the LoginViewModel's state.
+     */
+    @Override
+    public void stateChanged() {
+        final LoginState state = loginViewModel.getState();
+        // Only replace the text if it's different, so the cursor doesn't jump while typing
+        if (!usernameInputField.getText().equals(state.getUsername())) {
+            usernameInputField.setText(state.getUsername());
+        }
+        if (!new String(passwordInputField.getPassword()).equals(state.getPassword())) {
+            passwordInputField.setText(state.getPassword());
+        }
+        // A single space keeps the label's height when there's no error
+        final String error = state.getLoginError();
+        errorLabel.setText(error == null || error.isEmpty() ? " " : error);
+    }
+
+    /**
+     * Connects the boxes and the button: typing updates the state, and clicking Login
+     * (or pressing Enter in either box) runs the Login use case.
+     */
+    private void wireInputs() {
+        usernameInputField.getDocument().addDocumentListener(
+                onAnyChange(() -> loginViewModel.getState().setUsername(usernameInputField.getText())));
+        passwordInputField.getDocument().addDocumentListener(
+                onAnyChange(() -> loginViewModel.getState().setPassword(
+                        new String(passwordInputField.getPassword()))));
+
+        loginButton.addActionListener(e -> submit());
+        usernameInputField.addActionListener(e -> submit());
+        passwordInputField.addActionListener(e -> submit());
+    }
+
+    private void submit() {
+        final LoginState state = loginViewModel.getState();
+        loginController.execute(state.getUsername(), state.getPassword());
+    }
+
+    /**
+     * Makes a DocumentListener that runs the same code for any change to the text.
+     *
+     * @param update the code to run
+     * @return the listener
+     */
+    static DocumentListener onAnyChange(Runnable update) {
+        return new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                update.run();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                update.run();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                update.run();
+            }
+        };
     }
 }
