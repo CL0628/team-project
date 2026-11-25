@@ -176,6 +176,7 @@ Project Description: a digital version of UNO game!
 - **Main Success Scenario:**
     1. User picks a card.
     2. System assesses whether the card is playable.
+       1. System checks 
     3. If the card is playable, the system allows the player to play it.
 - **Extensions:**
     - **Wild / Wild +4 Card:**

@@ -1,5 +1,9 @@
 package use_case.playcard;
 
-public interface PlayCardDataAccessInterface {
+import entity.Game;
 
+public interface PlayCardDataAccessInterface {
+    Game getCurrentGame();
+
+    void saveGame(Game game);
 }

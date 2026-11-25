@@ -9,6 +9,7 @@ import java.util.Collections;
 /**
  * A class representing the deck in a UNO game. Always
  * It manages card avaliability and random selection
+ * The end of cardPile represents the top of the deck
  */
 public class Deck {
 

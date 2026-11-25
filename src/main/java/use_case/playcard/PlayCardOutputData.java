@@ -1,41 +1,60 @@
 package use_case.playcard;
 
-import entity.Direction;
-import entity.Player;
 import entity.card.Card;
 import entity.card.CardColor;
+
+import java.util.List;
 
 /**
  * Output Data for the PlayCard Use Case.
  */
 public class PlayCardOutputData {
 
-    private final Player player;
     private final Card playedCard;
-    private Direction direction;
-    private CardColor currentColor;  // color might change
+    private final List<Card> updatedHand;
+    private final String nextPlayerId;
+    private final CardColor currentColor;
+    private final String effectMessage;
+    private final boolean gameFinished;
+    private final String winnerId;
 
-    public PlayCardOutputData(Player player, Card playedCard,
-                              Direction dir, CardColor color) {
-        this.player = player;
+    public PlayCardOutputData(Card playedCard, List<Card> updatedHand, String nextPlayerId,
+                              CardColor currentColor, String effectMessage,
+                              boolean gameFinished, String winnerId) {
         this.playedCard = playedCard;
-        this.direction = dir;
-        this.currentColor = color;
-    }
-
-    public Player getPlayer() {
-        return player;
+        this.updatedHand = updatedHand;
+        this.nextPlayerId = nextPlayerId;
+        this.currentColor = currentColor;
+        this.effectMessage = effectMessage;
+        this.gameFinished = gameFinished;
+        this.winnerId = winnerId;
     }
 
     public Card getPlayedCard() {
         return playedCard;
     }
 
-    public Direction getDirection() {
-        return direction;
+    public List<Card> getUpdatedHand() {
+        return updatedHand;
+    }
+
+    public String getNextPlayerId() {
+        return nextPlayerId;
     }
 
     public CardColor getCurrentColor() {
         return currentColor;
+    }
+
+    public boolean isGameFinished() {
+        return gameFinished;
+    }
+
+    public String getEffectMessage() {
+        return effectMessage;
+    }
+
+    public String getWinnerId() {
+        return winnerId;
     }
 }

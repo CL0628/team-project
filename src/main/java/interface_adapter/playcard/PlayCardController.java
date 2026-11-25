@@ -1,6 +1,9 @@
 package interface_adapter.playcard;
 
+import entity.Game;
 import entity.Player;
+import entity.card.Card;
+import entity.card.CardColor;
 import use_case.playcard.PlayCardInputBoundary;
 import use_case.playcard.PlayCardInputData;
 
@@ -12,14 +15,10 @@ public class PlayCardController {
         this.playCardUseCaseInteractor = playCardUseCaseInteractor;
     }
 
-    /**
-     * Executes the PlayCard Use Case.
-     *
-     * @param player the player at current turn, waiting ot play a card
-     */
-    public void execute(Player player) {
-//        final PlayCardInputData playCardInputData = new PlayCardInputData();
+    public void execute(String playerID, int selectedCardIndex, CardColor chosenColor) {
+        final PlayCardInputData playCardInputData = new PlayCardInputData(playerID, selectedCardIndex, chosenColor);
 
-//        playCardUseCaseInteractor.execute(playCardInputData);
+        playCardUseCaseInteractor.execute(playCardInputData);
+
     }
 }
