@@ -1,10 +1,6 @@
 package entity;
 
-import entity.card.NumberCard;
-import entity.card.WildCard;
-import entity.card.Card;
-import entity.card.CardColor;
-import entity.card.ColoredCard;
+import entity.card.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -347,6 +343,7 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
         Objects.requireNonNull(card, "Card cannot be null.");
 
         Card topCard = getTopDiscard();
+
         if (card instanceof ColoredCard) {
             ColoredCard coloredCard = (ColoredCard) card;
             if (coloredCard.getColor() == currentColor) {
@@ -357,6 +354,14 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
         if (card instanceof NumberCard && topCard instanceof NumberCard) {
             return ((NumberCard) card).getNumber()
                     == ((NumberCard) topCard).getNumber();
+        }
+
+        if (card instanceof ReverseCard && topCard instanceof ReverseCard) {
+            return true;
+        }
+
+        if (card instanceof SkipCard && topCard instanceof SkipCard) {
+            return true;
         }
 
         return card instanceof WildCard;
