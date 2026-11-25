@@ -170,6 +170,13 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
     }
+
+    public Player getNextPlayer() {
+        // TODO: currently implemented by AI
+        int offset = direction == Direction.CLOCKWISE ? 1 : -1;
+        return players.get(Math.floorMod(currentPlayerIndex + offset, players.size()));
+    }
+
     /**
      * Returns the top card of the discard pile without removing it.
      *
@@ -232,7 +239,7 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
      *
      * @return true if a winner has been recorded, otherwise false
      */
-    public boolean isFinished(){
+    public boolean isFinished() {
         return winnerId != null;
     }
 
