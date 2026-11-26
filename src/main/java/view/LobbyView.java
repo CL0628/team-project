@@ -15,7 +15,6 @@ import javax.swing.ImageIcon;
 public class LobbyView extends BackgroundPanel
         implements LobbyViewModelListener {
     private final JButton startGameButton = new JButton("Start Game");
-    private final JButton settingButton = new JButton("Setting");
     private final JButton personalInformationButton = new JButton();
     private final JButton playerStatsButton = new JButton("Personal Stats");
     private final LobbyViewModel lobbyViewModel;
@@ -53,9 +52,6 @@ public class LobbyView extends BackgroundPanel
         playerStatsButton.setIcon(new ImageIcon(
                 getClass().getResource("/icons/Stats Button.png")
         ));
-        settingButton.setIcon(new ImageIcon(
-                getClass().getResource("/icons/Setting Button.png")
-        ));
 
         playerStatsButton.setText("");
         playerStatsButton.setContentAreaFilled(false);
@@ -63,25 +59,13 @@ public class LobbyView extends BackgroundPanel
         playerStatsButton.setOpaque(false);
         playerStatsButton.setMargin(new Insets(0, 0, 0, 0));
 
-        settingButton.setText("");
-        settingButton.setContentAreaFilled(false);
-        settingButton.setBorderPainted(false);
-        settingButton.setOpaque(false);
-        settingButton.setMargin(new Insets(0, 0, 0, 0));
-
-
         JPanel rightPanel = new JPanel();
         rightPanel.setOpaque(false);
         playerStatsButton.setToolTipText("View personal statistics");
-        settingButton.setToolTipText("Open settings");
         playerStatsButton.setCursor(
                 Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)
         );
-        settingButton.setCursor(
-                Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)
-        );
         rightPanel.add(playerStatsButton);
-        rightPanel.add(settingButton);
 
         topPanel.add(personalPanel, BorderLayout.WEST);
         topPanel.add(rightPanel, BorderLayout.EAST);
@@ -144,15 +128,6 @@ public class LobbyView extends BackgroundPanel
      */
     public JButton getStartGameButton() {
         return startGameButton;
-    }
-
-    /**
-     * Gets the settings button.
-     *
-     * @return the setting button
-     */
-    public JButton getSettingButton() {
-        return settingButton;
     }
 
     /**
