@@ -7,19 +7,18 @@ import interface_adapter.lobby.LobbyViewModel;
 import interface_adapter.login.LoginController;
 import interface_adapter.login.LoginPresenter;
 import interface_adapter.login.LoginViewModel;
+import interface_adapter.playcard.PlayCardViewModel;
 import interface_adapter.signup.SignupController;
 import interface_adapter.signup.SignupPresenter;
 import interface_adapter.signup.SignupViewModel;
 import use_case.login.LoginInputBoundary;
 import use_case.login.LoginInteractor;
 import use_case.login.LoginOutputBoundary;
+import use_case.playcard.PlayCardOutputBoundary;
 import use_case.signup.SignupInputBoundary;
 import use_case.signup.SignupInteractor;
 import use_case.signup.SignupOutputBoundary;
-import view.LobbyView;
-import view.LoginView;
-import view.SignupView;
-import view.ViewManager;
+import view.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,6 +51,8 @@ public class AppBuilder {
     private SignupViewModel signupViewModel;
     private SignupView signupView;
     private LobbyViewModel lobbyViewModel;
+    private InGameView inGameView;
+    private PlayCardViewModel playCardViewModel;
 
     /**
      * Creates an empty builder.
@@ -73,7 +74,7 @@ public class AppBuilder {
     }
 
     /**
-     * Adds the sign up screen.
+     * Adds the signup screen.
      *
      * @return this builder
      */
@@ -94,6 +95,27 @@ public class AppBuilder {
         cardPanel.add(new LobbyView(lobbyViewModel), LobbyViewModel.VIEW_NAME);
         return this;
     }
+
+    /**
+     * Adds the inGameView.
+     *
+     * @return this builder
+     */
+    public AppBuilder addInGameView() {
+        playCardViewModel = new PlayCardViewModel();
+        inGameView = new InGameView(playCardViewModel);
+        cardPanel.add(inGameView, playCardViewModel.VIEW_NAME);
+        return this;
+    }
+
+    /**
+     * Wires the Login use case. Call after the login, sign up and lobby views are added.
+     *
+     * @return this builder
+     */
+//    public AppBuilder addPlayCardUseCase() {
+//
+//    }
 
     /**
      * Wires the Login use case. Call after the login, sign up and lobby views are added.

@@ -1,4 +1,5 @@
 import app.AppBuilder;
+import view.InGameView;
 
 import javax.swing.*;
 
