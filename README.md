@@ -245,6 +245,7 @@ Entities: DiscardPile, Deck
 
 ### Card
 ![card.png](src/images/uml-diagrams/card.png)
+
 Represents an individual UNO card and serves as the abstract base entity for all card types.
 
 - Class Relationships:
@@ -252,25 +253,87 @@ Represents an individual UNO card and serves as the abstract base entity for all
   - NumberCard, DrawTwoCard, SkipCard, and ReverseCard extend ColoredCard.
   - WildDrawFourCard extends WildCard.
 
-### Hand
-Represents the cards currently held by a player.
-
 ### Deck
-Represents the draw pile of cards.
+![deck.png](src/images/uml-diagrams/deck.png)
 
-### CardPile
-Represents the pile of cards that doesn't belong to any player or bot player.
+Represents the draw pile of cards.# Deck Class
+- **Purpose:** Manages the UNO deck and card availability.
+- **Representation:** Stores cards in `cardPile`; the list's end is the top of the deck, and its front is the bottom.
+- **`shuffle()`** — Randomly shuffles the cards.
+- **`drawCards(int n)`** — Removes and returns `n` cards from the top of the deck.
+- **`addCard(Card card)`** — Adds a card to the top of the deck.
+- **`DealCards(int numCards, List<Player> players)`** — Deals the specified number of cards to each player.
 
 ### Player
-Represents an individual player.
 
-- **BotPlayer:** Extends `Player`.
+![player.png](src/images/uml-diagrams/player.png)
+
+Represents an individual UNO player.
+
+- Stores the player's ID, hand of cards, and whether UNO has been declared.
+- `takeCards(List<Card>)`: Adds cards to the hand and resets UNO declaration.
+- `playCard(int)`: Removes and returns a card by hand index; resets UNO declaration.
+- `getId()`, `getHand()`: Returns the ID and a copy of the hand.
+- `hasDeclaredUno()`, `declareUno()`: Checks or records UNO declaration.
+
+### BotPlayer
+
+Extends `Player` and represents a bot player.
+
+- Constructor initializes the bot with an ID and starting hand.
+- `chooseCard(List<Card>)`: Selects the first playable card; throws an exception if none are available.
+- `chooseColour()`: Chooses the colour most common in the bot's hand; ties follow the order in `CardColor`.
 
 ### Game
-Represents the actual UNO game and its current state.
+
+![game.png](src/images/uml-diagrams/game.png)
+
+Represents a single UNO game and manages its current state, including players, card piles, turn order, direction, and active colour.
+
+- **Class Relationships:**
+    - Uses `Player`, `Deck`, `Card`, `CardColor`, `Direction`, and `gameSetting`.
+    - Supports both human players and bot players.
+
+- **Game State:**
+    - Stores a unique game ID, game settings, players, draw pile, and discard pile.
+    - Tracks the current player, direction of play, active colour, pending skip, and winner.
+    - Supports 2–4 players.
+
+- **Turn Management:**
+    - `getCurrentPlayer()`, `getNextPlayer()`: Returns the current or next player.
+    - `advanceTurn()`: Advances the turn according to the current direction and pending skip.
+    - `reverseDirection()`: Reverses the direction of play; skips the opponent in a two-player game.
+    - `skipNextPlayer()`: Marks the next player to be skipped.
+
+- **Card Management:**
+    - `canPlayCard(Card)`: Checks whether a card can be played.
+    - `addToDiscardPile(Card)`: Adds a played card and updates the active colour for coloured cards.
+    - `getTopDiscard()`: Returns the top card of the discard pile.
+    - `drawCardsForCurrentPlayer(int)`, `drawCardsForNextPlayer(int)`: Intended to draw cards for the current or next player; not yet implemented.
+
+- **Game Status:**
+    - `checkForWinner()`: Records the current player as the winner if their hand is empty.
+    - `isFinished()`, `getWinnerId()`: Checks whether the game has finished and returns the winner's ID.
+
+- **Accessors:**
+    - Provides getters for game ID, settings, players, draw pile, discard pile, current player index, direction, and active colour.
 
 ### GameSettings
-Represents the configuration of a game.
+
+![gameSetting.png](src/images/uml-diagrams/gameSetting.png)
+
+Represents the configuration of a UNO game, used to initialize a new game.
+
+- **Attributes:**
+    - `numBots`: Stores the number of bot players.
+    - `cardsDealt`: Stores the number of cards dealt to each player at the start of the game.
+
+- **Constructor:**
+    - `gameSetting(int numBots, int cardsDealt)`: Initializes the game settings with the specified number of bots and cards dealt.
+
+- **Methods:**
+    - `getNumBots()`, `getCardsDealt()`: Returns the current number of bots and cards dealt.
+    - `setNumBots(int)`, `setCardsDealt(int)`: Updates the number of bots and cards dealt.
 
 ---
 
