@@ -17,6 +17,10 @@ public class Deck {
     // and the front of the list represents the bottom of the deck
     private List<Card> cardPile;
 
+    public Deck() {
+        cardPile = new ArrayList<>();
+    }
+
     /**
      * Shuffles the cards in the cardPile.
      */
