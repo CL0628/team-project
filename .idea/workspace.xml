@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5bbbfaa-e8ec-4332-86fe-25498b2b9f93" name="Changes" comment="" />
+    <list default="true" id="b5bbbfaa-e8ec-4332-86fe-25498b2b9f93" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/card/DrawTwoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/card/DrawTwoCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/InGameViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/declareuno/DeclareUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/declareuno/DeclareUnoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/drawcard/DrawCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/drawcard/DrawCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playcard/PlayCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playcard/PlayCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/InGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/InGameView.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +26,19 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="3d5db10ed0ef1c883f7a69dc5ee09e192191b4e1" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "CL0628"
+  }
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/CL0628/team-project.git&quot;,
@@ -32,61 +51,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.28127100854016" />
-      <entry key="MS500" value="4.311886129969597" />
-      <entry key="S2" value="9.573676348955392" />
-      <entry key="S5" value="21.899029478458882" />
-      <entry key="S10" value="38.172412194955896" />
-      <entry key="S30" value="73.74637547775674" />
-      <entry key="S60" value="103.25350113828904" />
-      <entry key="M2" value="135.0684933880487" />
-      <entry key="M5" value="186.23766105565446" />
-      <entry key="M10" value="225.7177879800914" />
-      <entry key="M15" value="244.47882988174757" />
-      <entry key="M30" value="267.238515909009" />
-      <entry key="H1" value="280.4219080185659" />
-      <entry key="H2" value="287.526666330781" />
-      <entry key="H4" value="291.2159538528335" />
-      <entry key="D1" value="294.3626311216927" />
-      <entry key="W1" value="294.90878184703195" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000006105216" />
+      <entry key="S5" value="1.000528083976179" />
+      <entry key="S10" value="1.0538910075348848" />
+      <entry key="S30" value="2.6458442200863805" />
+      <entry key="S60" value="6.5818487872822935" />
+      <entry key="M2" value="13.619195615659995" />
+      <entry key="M5" value="30.665107971270245" />
+      <entry key="M10" value="67.23216167253966" />
+      <entry key="M15" value="101.69129230686566" />
+      <entry key="M30" value="189.37957951966638" />
+      <entry key="H1" value="361.99692699037865" />
+      <entry key="H2" value="628.2430322882668" />
+      <entry key="H4" value="894.1630115227128" />
+      <entry key="D1" value="1249.6921353999276" />
+      <entry key="W1" value="1328.2929141411712" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="4.6385021395840207E-116" />
-      <entry key="MS500" value="8.575817932957642E-24" />
-      <entry key="S2" value="1.71127138382318E-6" />
-      <entry key="S5" value="0.004935459076719706" />
-      <entry key="S10" value="0.07025282255340137" />
-      <entry key="S30" value="0.41262410234175706" />
-      <entry key="S60" value="0.6423582352097275" />
-      <entry key="M2" value="0.8014725417690403" />
-      <entry key="M5" value="0.9152831331553754" />
-      <entry key="M10" value="0.9567043081095511" />
-      <entry key="M15" value="0.9709238136821721" />
-      <entry key="M30" value="0.9853546639064381" />
-      <entry key="H1" value="0.9926503230777888" />
-      <entry key="H2" value="0.9963183843921518" />
-      <entry key="H4" value="0.9981574947833391" />
-      <entry key="D1" value="0.9996926797796563" />
-      <entry key="W1" value="0.9999560913278894" />
+      <entry key="MS100" value="6.447572614275669E-212" />
+      <entry key="MS500" value="5.779353466222945E-43" />
+      <entry key="S2" value="2.8020089170022232E-11" />
+      <entry key="S5" value="7.671239813761174E-5" />
+      <entry key="S10" value="0.013629913838240169" />
+      <entry key="S30" value="0.638651748410229" />
+      <entry key="S60" value="2.4776936016415436" />
+      <entry key="M2" value="5.846103499526978" />
+      <entry key="M5" value="10.53569184449943" />
+      <entry key="M10" value="13.103600616618868" />
+      <entry key="M15" value="14.206720199609645" />
+      <entry key="M30" value="16.04991697552178" />
+      <entry key="H1" value="19.391880814777423" />
+      <entry key="H2" value="24.124240114682852" />
+      <entry key="H4" value="28.415146951246452" />
+      <entry key="D1" value="33.694295302482615" />
+      <entry key="W1" value="34.8075709767302" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.202712707754927" />
-      <entry key="MS500" value="4.270104311358342" />
-      <entry key="S2" value="9.553626483741464" />
-      <entry key="S5" value="21.88199728846186" />
-      <entry key="S10" value="38.157549290080006" />
-      <entry key="S30" value="73.73634590255912" />
-      <entry key="S60" value="103.24624552125064" />
-      <entry key="M2" value="135.0636421862301" />
-      <entry key="M5" value="186.2349368546345" />
-      <entry key="M10" value="225.716125386921" />
-      <entry key="M15" value="244.47762650817475" />
-      <entry key="M30" value="267.23785667785694" />
-      <entry key="H1" value="280.4215617504982" />
-      <entry key="H2" value="287.52648871137905" />
-      <entry key="H4" value="291.21586387880296" />
-      <entry key="D1" value="294.3626159605276" />
-      <entry key="W1" value="294.90877967704796" />
+      <entry key="MS100" value="1.7527745895340508E-5" />
+      <entry key="MS500" value="0.11187813386599654" />
+      <entry key="S2" value="0.5783440925443329" />
+      <entry key="S5" value="0.8038745655278416" />
+      <entry key="S10" value="0.9620029767611823" />
+      <entry key="S30" value="3.2194966126938533" />
+      <entry key="S60" value="8.98302900681274" />
+      <entry key="M2" value="19.386527346443863" />
+      <entry key="M5" value="41.1461258727289" />
+      <entry key="M10" value="80.301334732899" />
+      <entry key="M15" value="115.87273155884247" />
+      <entry key="M30" value="205.4108012874205" />
+      <entry key="H1" value="381.31710030690454" />
+      <entry key="H2" value="652.11168556593" />
+      <entry key="H4" value="922.0750453590595" />
+      <entry key="D1" value="1282.4949701618837" />
+      <entry key="W1" value="1362.1167720347476" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -94,41 +113,145 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3JxxCH0DYWiW5XvcQgHmJ2fWnWC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Lobby-View&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CardImagePreview.executor": "Run",
+    "Application.Main.executor": "Run",
+    "JUnit.CardImageProviderTest.loadsImagesForEverySupportedCard.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feature/playCard-UseCase",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/catherineli0723/IdeaProjects/team-project/src/main/java/interface_adapter/declareuno",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.tools",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/interface_adapter/declareuno" />
+      <recent name="$PROJECT_DIR$/src/main/java/interface_adapter" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/images/uml-diagrams" />
       <recent name="C:\Users\20175\IdeaProjects\team-project\src\main\resources\backgrounds" />
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="interface_adapter.inGameView" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="view" />
+      <recent name="interface_adapter.inGameView" />
+      <recent name="interface_adapter.ingameview" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.CardImagePreview">
+    <configuration name="CardImagePreview" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="interface_adapter.ingame.CardImagePreview" />
+      <module name="TeamProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="interface_adapter.ingame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ViewPlayerStatsView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.ViewPlayerStatsView" />
+      <module name="TeamProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CardImageProviderTest.loadsImagesForEverySupportedCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="interface_adapter.ingame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="interface_adapter.inGameView" />
+      <option name="MAIN_CLASS_NAME" value="interface_adapter.inGameView.CardImageProviderTest" />
+      <option name="METHOD_NAME" value="loadsImagesForEverySupportedCard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayCardInteractorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="playcard.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="playcard" />
+      <option name="MAIN_CLASS_NAME" value="playcard.PlayCardInteractorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayCardInteractorTest.successPlayNumberCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TeamProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="playcard.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="playcard" />
+      <option name="MAIN_CLASS_NAME" value="playcard.PlayCardInteractorTest" />
+      <option name="METHOD_NAME" value="successPlayNumberCardTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.PlayCardInteractorTest.successPlayNumberCardTest" />
+        <item itemvalue="JUnit.PlayCardInteractorTest" />
+        <item itemvalue="JUnit.CardImageProviderTest.loadsImagesForEverySupportedCard" />
+        <item itemvalue="Application.ViewPlayerStatsView" />
+        <item itemvalue="Application.CardImagePreview" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -154,10 +277,15 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/view/BackgroundPanel.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="1" />
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.net.UnknownHostException" package="java.net" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <line-breakpoint enabled="true" suspend="NONE" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/interface_adapter/ingame/CardImagePreview.java</url>
+          <line>14</line>
+          <placement>INTER_LINE</placement>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

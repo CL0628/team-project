@@ -1,8 +1,5 @@
 package interface_adapter.playcard;
 
-import entity.Game;
-import entity.Player;
-import entity.card.Card;
 import entity.card.CardColor;
 import use_case.playcard.PlayCardInputBoundary;
 import use_case.playcard.PlayCardInputData;

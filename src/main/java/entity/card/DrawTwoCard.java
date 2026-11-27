@@ -7,7 +7,6 @@ import entity.Game;
  */
 public class DrawTwoCard extends ColoredCard implements CardEffect {
 
-
     /**
      * Constructor of the DrawTwoCard.
      *
