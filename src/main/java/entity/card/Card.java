@@ -12,4 +12,11 @@ public abstract class Card {
      */
     public abstract CardType getCardType();
 
+    /**
+     * Returns a copy of this card.
+     *
+     * @return A copy of this.
+     */
+    public abstract Card copy();
+
 }

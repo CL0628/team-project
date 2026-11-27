@@ -36,4 +36,15 @@ public class DrawTwoCard extends ColoredCard implements CardEffect {
     public CardType getCardType() {
         return CardType.DRAW_TWO;
     }
+
+    /**
+     * Returns a copy of this card.
+     *
+     * @return A copy of this.
+     */
+    @Override
+    public Card copy() {
+        DrawTwoCard copy = new DrawTwoCard(this.getColor());
+        return copy;
+    }
 }

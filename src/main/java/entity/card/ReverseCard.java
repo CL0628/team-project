@@ -35,4 +35,15 @@ public class ReverseCard extends ColoredCard implements CardEffect {
     public CardType getCardType() {
         return CardType.REVERSE;
     }
+
+    /**
+     * Returns a copy of this card.
+     *
+     * @return A copy of this.
+     */
+    @Override
+    public Card copy() {
+        ReverseCard copy = new ReverseCard(this.getColor());
+        return copy;
+    }
 }

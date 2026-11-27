@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5bbbfaa-e8ec-4332-86fe-25498b2b9f93" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/card/DrawTwoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/card/DrawTwoCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/InGameViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/declareuno/DeclareUnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/declareuno/DeclareUnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/drawcard/DrawCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/drawcard/DrawCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playcard/PlayCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playcard/PlayCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/InGameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/InGameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/InGameTestView/GameTestViewState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/InGameTestView/GameTestViewState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/InGameTestView/InGameTestView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/InGameTestView/InGameTestView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/InGameTestView/UnoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/InGameTestView/UnoApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +29,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "CL0628"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;CL0628&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/CL0628/team-project.git&quot;,
@@ -125,6 +121,7 @@
   "keyToString": {
     "Application.CardImagePreview.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.UnoApplication.executor": "Run",
     "JUnit.CardImageProviderTest.loadsImagesForEverySupportedCard.executor": "Run",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -135,7 +132,7 @@
     "git-widget-placeholder": "feature/playCard-UseCase",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/catherineli0723/IdeaProjects/team-project/src/main/java/interface_adapter/declareuno",
+    "last_opened_file_path": "/Users/catherineli0723/IdeaProjects/team-project/src/main/java/interface_adapter",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
@@ -169,13 +166,13 @@
       <recent name="interface_adapter.ingameview" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CardImagePreview">
-    <configuration name="CardImagePreview" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="interface_adapter.ingame.CardImagePreview" />
+  <component name="RunManager" selected="Application.UnoApplication">
+    <configuration name="UnoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="interface_adapter.InGameTestView.UnoApplication" />
       <module name="TeamProject" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="interface_adapter.ingame.*" />
+          <option name="PATTERN" value="interface_adapter.InGameTestView.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -245,11 +242,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.UnoApplication" />
         <item itemvalue="JUnit.PlayCardInteractorTest.successPlayNumberCardTest" />
         <item itemvalue="JUnit.PlayCardInteractorTest" />
         <item itemvalue="JUnit.CardImageProviderTest.loadsImagesForEverySupportedCard" />
         <item itemvalue="Application.ViewPlayerStatsView" />
-        <item itemvalue="Application.CardImagePreview" />
       </list>
     </recent_temporary>
   </component>
@@ -273,6 +270,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
