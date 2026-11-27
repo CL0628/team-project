@@ -27,4 +27,16 @@ public class WildDrawFourCard extends WildCard implements CardEffect {
     public CardType getCardType() {
         return CardType.WILD_DRAW_FOUR;
     }
+
+    /**
+     * Returns a copy of this card.
+     *
+     * @return A copy of this.
+     */
+    @Override
+    public Card copy() {
+        WildDrawFourCard copy = new WildDrawFourCard();
+        return copy;
+    }
+
 }
