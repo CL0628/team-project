@@ -7,7 +7,6 @@ import entity.card.ColoredCard;
 import entity.card.NumberCard;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +14,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class CardImageProvider {
-    public ImageIcon getImage(Card card) {
+    public BufferedImage getImage(Card card) {
         Objects.requireNonNull(card, "Card cannot be null.");
 
         final String path = getImagePath(card);
@@ -29,14 +28,15 @@ public class CardImageProvider {
             if (image == null) {
                 throw new IllegalStateException("Card image resource is not a supported image: " + path);
             }
-            return new ImageIcon(image);
+            return image;
         }
         catch (IOException exception) {
             throw new IllegalStateException("Could not read card image resource: " + path, exception);
         }
     }
 
-    private static String getImagePath(Card card) {
+    // Returns the ImagePath of any Card in assets
+     private String getImagePath(Card card) {
         final CardType cardType = card.getCardType();
         if (cardType == CardType.WILD) {
             return "/cards/wild/wild.png";
