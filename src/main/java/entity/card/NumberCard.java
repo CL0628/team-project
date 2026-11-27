@@ -36,4 +36,15 @@ public class NumberCard extends ColoredCard {
     public CardType getCardType() {
         return CardType.NUMBER;
     }
+
+    /**
+     * Returns a copy of this card.
+     *
+     * @return A copy of this.
+     */
+    @Override
+    public Card copy() {
+        NumberCard copy = new NumberCard(this.getColor(), number);
+        return copy;
+    }
 }

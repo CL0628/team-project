@@ -36,4 +36,16 @@ public class WildCard extends Card implements CardEffect {
     public CardType getCardType() {
         return CardType.WILD;
     }
+
+    /**
+     * Returns a copy of this card.
+     *
+     * @return A copy of this.
+     */
+    @Override
+    public Card copy() {
+        WildCard copy = new WildCard();
+        return copy;
+    }
+
 }

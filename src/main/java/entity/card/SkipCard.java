@@ -35,4 +35,15 @@ public class SkipCard extends ColoredCard implements CardEffect {
     public CardType getCardType() {
         return CardType.SKIP;
     }
+
+    /**
+     * Returns a copy of this card.
+     *
+     * @return A copy of this.
+     */
+    @Override
+    public Card copy() {
+        SkipCard copy = new SkipCard(this.getColor());
+        return copy;
+    }
 }
