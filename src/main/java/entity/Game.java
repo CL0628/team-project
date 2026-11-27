@@ -2,7 +2,6 @@ package entity;
 
 import entity.card.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -30,21 +29,16 @@ public class Game {
     private final gameSetting settings;
     // Players in seating order, including both humans and bots.
     private final List<Player> players;
-    // Deck from which players draw cards.
-    private final Deck drawPile;
-    // Discarded cards; the last element is the top card.
-    private final List<Card> discardPile;
+    // Manages the draw pile and discard pile.
+    private final CardPileManager cardPileManager;
+    // Manages turn order, direction and pending skip effects.
+    private final TurnManager turnManager;
 
-    // Index of the player whose turn it currently is.
-    private int currentPlayerIndex;
-    // Current direction of play: clockwise or anticlockwise.
-    private Direction direction;
+
     // Active color that cards must match, unless another rule allows play.
     private CardColor currentColor;
     // ID of the winning player; null while no winner has been recorded.
     private String winnerId;
-    // Whether the next player should be skipped when the turn advances.
-    private boolean skipPending;
     /**
      * Creates a game using the supplied players, deck and initial discard.
      * The first player starts the game in the clockwise direction.
@@ -74,13 +68,9 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
     this.players = List.copyOf(players);
     this.gameId = UUID.randomUUID().toString();
 
-    this.drawPile = Objects.requireNonNull(drawPile, "Draw pile cannot be null.");
+    this.cardPileManager = new CardPileManager(drawPile, firstDiscard);
 
-    this.discardPile = new ArrayList<>();
-    this.discardPile.add(Objects.requireNonNull(firstDiscard, "First discard cannot be null"));
-
-    this.currentPlayerIndex = 0;
-    this.direction = Direction.CLOCKWISE;
+    this.turnManager = new TurnManager(this.players.size());
     this.currentColor = Objects.requireNonNull(initialColor, "Initial color cannot be null.");
 
 }
@@ -121,9 +111,8 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
      * @return the game's deck, not a copy
      */
     public Deck getDrawPile() {
-        return drawPile;
+        return cardPileManager.getDrawPile();
     }
-
     /**
      * Returns an unmodifiable snapshot of the discard-pile list.
      * The last element is the top card; card objects are not cloned.
@@ -131,27 +120,24 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
      * @return a snapshot of the discarded cards
      */
     public List<Card> getDiscardPile() {
-        return List.copyOf(discardPile);
+        return cardPileManager.getDiscardPile();
     }
-
     /**
      * Returns the current player's zero-based position in the player list.
      *
      * @return the current player's index
      */
     public int getCurrentPlayerIndex() {
-        return currentPlayerIndex;
+        return turnManager.getCurrentPlayerIndex();
     }
-
     /**
      * Returns the current direction of play.
      *
      * @return CLOCKWISE or ANTICLOCKWISE
      */
     public Direction getDirection() {
-        return direction;
+        return turnManager.getDirection();
     }
-
     /**
      * Returns the active colour used when checking card matches.
      * This may differ from the top card's own colour after a wild card is played.
@@ -168,13 +154,10 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
      * @return the current human or bot player
      */
     public Player getCurrentPlayer() {
-        return players.get(currentPlayerIndex);
+        return players.get(turnManager.getCurrentPlayerIndex());
     }
-
     public Player getNextPlayer() {
-        // TODO: currently implemented by AI
-        int offset = direction == Direction.CLOCKWISE ? 1 : -1;
-        return players.get(Math.floorMod(currentPlayerIndex + offset, players.size()));
+        return players.get(turnManager.getNextPlayerIndex());
     }
 
     /**
@@ -183,9 +166,8 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
      * @return the most recently discarded card
      */
     public Card getTopDiscard() {
-        return discardPile.get(discardPile.size() - 1);
+        return cardPileManager.getTopDiscard();
     }
-
     /**
      * Advances to the next player in the current direction.
      * If a skip is pending, moves two positions and then clears the skip flag.
@@ -200,17 +182,7 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
                     "Cannot advance the turn after the game has finished.");
         }
 
-        // Move two positions for Skip; otherwise move one.
-        int steps = skipPending ? 2 : 1;
-
-
-        int offset = direction == Direction.CLOCKWISE ? 1 : -1;
-
-        currentPlayerIndex = Math.floorMod(
-                currentPlayerIndex + offset * steps,
-                players.size());
-
-        skipPending = false;
+        turnManager.advanceTurn();
     }
 
     /**
@@ -265,7 +237,7 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
                     "Cannot skip a player after the game has finished.");
         }
 
-        skipPending = true;
+        turnManager.skipNextPlayer();
     }
 
     /**
@@ -280,13 +252,8 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
             throw new IllegalStateException(
                     "Cannot reverse direction after the game has finished.");
         }
-        direction = direction == Direction.CLOCKWISE
-                ? Direction.ANTICLOCKWISE
-                : Direction.CLOCKWISE;
 
-        if (players.size() == 2) {
-            skipNextPlayer();
-        }
+        turnManager.reverseDirection();
     }
 
     /**
@@ -336,7 +303,7 @@ public Game(gameSetting settings, List<Player> players, Deck drawPile, Card firs
                     "Card colour cannot be null.");
         }
 
-        discardPile.add(card);
+        cardPileManager.addToDiscardPile(card);
         currentColor = nextColor;
     }
 
